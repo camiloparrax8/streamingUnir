@@ -35,18 +35,18 @@ export const MisPeliculas = () => {
 
   return (
     <div className="mis-peliculas-container">
-      <div className="mx-4 py-4">
+      <div className="grid-container">
         <h2>Películas</h2>
-        <div className="row p-4">
+        <div className="grid-content">
           {misPeliculas.map((misPeliculas) => (
-            <div key={misPeliculas} className="col-md-4 px-4 mt-3">
+            <div key={misPeliculas} className="">
               <Card className="card-item">
                 <Card.Img variant="top" src={misPeliculas.imagen} />
                 <Card.Body>
                   <Card.Title>  {misPeliculas.nombre}</Card.Title>
-                  <Card.Text> <b>Usuario:</b>   {misPeliculas.usuario}</Card.Text>
-                  <Card.Text> <b> Correo:</b> {misPeliculas.correo}</Card.Text>
-                  <Card.Text> <b>Fecha de vencimiento:</b> {misPeliculas.vencimiento}</Card.Text>
+                  <Card.Text className="fecha-vencimiento">Vence el {misPeliculas.vencimiento}</Card.Text>
+                  <Card.Text> <b>Usuario</b>   {misPeliculas.usuario}</Card.Text>
+                  <Card.Text> <b> Correo</b> {misPeliculas.correo}</Card.Text>
                   <div className="action-container">
                     <Link
                       className="primary-btn my-3 mx-3"

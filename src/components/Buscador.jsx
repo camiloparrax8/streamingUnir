@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import data from "../data.json";
 import { GridMovie } from "./GridMovie";
 
@@ -27,6 +29,7 @@ export const Buscador = () => {
 
   return (
     <div className="search">
+      <h2>Busca una película</h2>
       <form className="form-search" onSubmit={buscador}>
         <input
           className="input-search"
@@ -36,17 +39,14 @@ export const Buscador = () => {
           onChange={(e) => setInput(e.target.value)}
         />
         <button className="btn-search" type="submit">
-          Buscar
+          <FontAwesomeIcon icon={faSearch} />
         </button>
       </form>
-      <div className="home">
-        <div className="mx-4 my-4">
-          <h2>Películas</h2>
-          <div className="row p-4">
+      <div className="container-streaming">
+        <div className="grid-container">
+          <div className="grid-content">
             {peliculas.map((pelicula) => (
-              <div key={pelicula} className="col-md-3 mt-3">
-                <GridMovie pelicula={pelicula}> </GridMovie>
-              </div>
+              <GridMovie pelicula={pelicula} key={pelicula}> </GridMovie>
             ))}
           </div>
         </div>

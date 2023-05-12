@@ -14,15 +14,13 @@ export const Home = () => {
   }, [data]);
 
   return (
-    <div className="home">
+    <div className="home container-streaming">
       <Banner pelicula={populares}></Banner>
-      <div className="mx-4 my-4">
+      <div className="grid-container">
         <h2>Películas</h2>
-        <div className="row p-4">
+        <div className="grid-content">
           {peliculas.map((pelicula) => (
-            <div key={pelicula} className="col-md-3 mt-3">
-              <GridMovie pelicula={pelicula}> </GridMovie>
-            </div>
+              <GridMovie pelicula={pelicula} key={pelicula}> </GridMovie>
           ))}
         </div>
       </div>

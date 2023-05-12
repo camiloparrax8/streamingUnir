@@ -13,19 +13,12 @@ export const GridMovie = (props) => {
   return (
     <>
       <Card className="card-item">
-
         <Link to={`/detalles/${props.pelicula.id}`} >
-
         <Card.Img variant="top"  src={props.pelicula.imagen}  />
-
         </Link>
         <Card.Body>
           <Card.Title>{props.pelicula.nombre}</Card.Title>
-          <Card.Text>{props.pelicula.sinopsis}</Card.Text>
           <div className="action-container">
-            <Link className="primary-btn" to={`/detalles/${props.pelicula.id}`}>
-              Ver detalles
-            </Link>
             <button
               className="icon-save-btn"
               onClick={() => setModalShow(true)}

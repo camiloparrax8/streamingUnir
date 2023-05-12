@@ -29,6 +29,7 @@ export const Categorias = () => {
 
   return (
     <div className="category">
+      <h2>Categorías</h2>
       <div className="category-container">
         {categorias.map((item) => (
           <button className={categoriaActiva == item ? "primary-btn-active" : "primary-btn"} value={item} onClick={filtro}>
@@ -36,14 +37,11 @@ export const Categorias = () => {
           </button>
         ))}
       </div>
-      <div className="home">
-        <div className="mx-4 my-4">
-          <h2>Películas</h2>
-          <div className="row p-4">
+      <div className="container-streaming">
+        <div className="grid-container">
+          <div className="grid-content">
             {peliculas.map((pelicula) => (
-              <div key={pelicula} className="col-md-3 mt-3">
-                <GridMovie pelicula={pelicula}> </GridMovie>
-              </div>
+                <GridMovie pelicula={pelicula} key={pelicula}> </GridMovie>
             ))}
           </div>
         </div>

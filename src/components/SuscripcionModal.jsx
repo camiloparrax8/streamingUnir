@@ -39,11 +39,6 @@ export const SuscripcionModal = (props) => {
        <Modal.Body>
        <div className="poster-movie">
          <img src={props.pelicula.imagen}></img>
-         <div>
-           <h3>{props.pelicula.nombre}</h3>
-           <p>{props.pelicula.categoria}</p>
-           <p>{props.pelicula.duracion}</p>
-         </div>
        </div>
        <Form onSubmit={handleSubmit}>
          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -79,15 +74,15 @@ export const SuscripcionModal = (props) => {
            />
          </Form.Group>
          <button className="primary-btn" type="submit">
-           Añadir
+           Rentar
          </button>
        </Form>
      
      </Modal.Body>
      :
-     <Alert variant="success">
-     Película agregada correctamente
-   </Alert>
+      <Modal.Body>
+       <h5 className="mt-4">Película rentada correctamente</h5>
+      </Modal.Body> 
       }
     </Modal>
   );

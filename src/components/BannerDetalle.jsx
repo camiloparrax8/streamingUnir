@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Banner = (props) => {
+export const BannerDetalle = (props) => {
   return (
     <>
       <div className="home-poster">
@@ -9,7 +9,9 @@ export const Banner = (props) => {
           <img src={props.pelicula.imagen}></img>
         </div>
         <div className="poster-info-content">
-          <div className="info">
+            <img src={props.pelicula.imagen}></img>
+            <div className="content-info">
+            <div className="info">
             <div className="starts-container">
               <i className="fa fa-star"></i>
               {props.pelicula.puntuacion}
@@ -21,10 +23,20 @@ export const Banner = (props) => {
             </div>
           <div className="banner-description">
             <h6>{props.pelicula.sinopsis}</h6>
+            <p><b>Publicado en: </b>{props.pelicula.año}</p>
+            <p><b>Director: </b>{props.pelicula.director}</p>
+            <p><b>Actores: </b>{props.pelicula.actores_principales.join(", ")}</p>
           </div>
           <div className="poster-action">
-            <Link className="primary-btn"  to={`/detalles/${props.pelicula.id}`} >Ver Detalles</Link>
+            {
+                props.pelicula.categoria.map( element => 
+                    <div className="primary-btn">
+                        {element}
+                    </div>       
+                )
+            }
           </div>
+            </div>
         </div>
       </div>
     </>
