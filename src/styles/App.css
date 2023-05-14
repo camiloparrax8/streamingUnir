@@ -28,12 +28,15 @@
 
 a.primary-btn{
   height: 36px;
+  width: 140px;
   text-decoration: none;
   padding: 4px 18px;
 }
 
 a.primary-btn:hover{
   height: 36px;
+  width: 140px;
+
   padding: 4px 18px;
   border-color: var(--text-color);
 }
