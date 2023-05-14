@@ -38,30 +38,31 @@ export const MisPeliculas = () => {
       <div className="grid-container">
         <h2>Películas</h2>
         <div className="grid-content">
-          {misPeliculas.map((misPeliculas) => (
-            <div key={misPeliculas} className="">
-              <Card className="card-item">
-                <Card.Img variant="top" src={misPeliculas.imagen} />
-                <Card.Body>
-                  <Card.Title>  {misPeliculas.nombre}</Card.Title>
-                  <Card.Text className="fecha-vencimiento">Vence el {misPeliculas.vencimiento}</Card.Text>
-                  <Card.Text> <b>Usuario</b>   {misPeliculas.usuario}</Card.Text>
-                  <Card.Text> <b> Correo</b> {misPeliculas.correo}</Card.Text>
-                  <div className="action-container">
-                    <Link
-                      className="primary-btn my-3 mx-3"
-                      to={`/detalles/${misPeliculas.id}`}
-                    >
-                      Ver detalles
-                    </Link>
-                    {/* <button className="icon-save-btn">
-                      <FontAwesomeIcon icon={faSquarePlus} />
-                    </button> */}
-                  </div>
-                </Card.Body>
-              </Card>
-            </div>
-          ))}
+          {
+            misPeliculas.length > 0
+            ? misPeliculas.map((misPeliculas) => (
+              <div key={misPeliculas} className="">
+                <Card className="card-item">
+                  <Card.Img variant="top" src={misPeliculas.imagen} />
+                  <Card.Body>
+                    <Card.Title>  {misPeliculas.nombre}</Card.Title>
+                    <Card.Text className="fecha-vencimiento">Vence el {misPeliculas.vencimiento}</Card.Text>
+                    <Card.Text> <b>Usuario</b>   {misPeliculas.usuario}</Card.Text>
+                    <Card.Text> <b> Correo</b> {misPeliculas.correo}</Card.Text>
+                    <div className="action-container">
+                      <Link
+                        className="primary-btn my-3 mx-3"
+                        to={`/detalles/${misPeliculas.id}`}
+                      >
+                        Ver detalles
+                      </Link>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))
+            : <h4>No hay películas suscritas</h4>
+          }
         </div>
       </div>
     </div>

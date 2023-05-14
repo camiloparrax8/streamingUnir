@@ -44,10 +44,14 @@ export const Buscador = () => {
       </form>
       <div className="container-streaming">
         <div className="grid-container">
-          <div className="grid-content">
-            {peliculas.map((pelicula) => (
+        <div className="grid-content">
+          {
+            peliculas.length > 0
+            ? peliculas.map((pelicula) => (
               <GridMovie pelicula={pelicula} key={pelicula}> </GridMovie>
-            ))}
+            ))
+            : <h3>No hay resultados</h3>
+          }
           </div>
         </div>
       </div>

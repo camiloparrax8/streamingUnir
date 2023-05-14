@@ -64,7 +64,7 @@ li{
   list-style: none;
 }
 
-li a:hover{
+li a:hover, li .a-active{
  color: white;
  text-decoration: none;
  border-bottom: 3px solid var(--element-color-one);

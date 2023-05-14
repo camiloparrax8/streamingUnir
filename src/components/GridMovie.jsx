@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { SuscripcionModal } from "./SuscripcionModal";
 import { useState } from "react";
 
-
 export const GridMovie = (props) => {
   const [modalShow, setModalShow] = useState(false);
 
