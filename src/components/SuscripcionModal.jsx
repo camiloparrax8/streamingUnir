@@ -32,13 +32,13 @@ export const SuscripcionModal = (props) => {
   return (
     <Modal {...props}>
       <Modal.Header closeButton>
-        <Modal.Title>Rentar película</Modal.Title>
+        <Modal.Title>Rentar : {props.pelicula.name}</Modal.Title>
       </Modal.Header>
       
       { submitConfirm==false ?
        <Modal.Body>
        <div className="poster-movie">
-         <img src={props.pelicula.imagen}></img>
+         <img src={props.pelicula.image}></img>
        </div>
        <Form onSubmit={handleSubmit}>
          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

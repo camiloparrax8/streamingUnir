@@ -13,10 +13,10 @@ export const GridMovie = (props) => {
     <>
       <Card className="card-item">
         <Link to={`/detalles/${props.pelicula.id}`} >
-        <Card.Img variant="top"  src={props.pelicula.imagen}  />
+        <Card.Img variant="top"  src={props.pelicula.image}  />
         </Link>
         <Card.Body>
-          <Card.Title>{props.pelicula.nombre}</Card.Title>
+          <Card.Title>{props.pelicula.name}</Card.Title>
           <div className="action-container">
             <button
               className="icon-save-btn"

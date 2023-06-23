@@ -3,28 +3,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import data from "../data.json";
 import { GridMovie } from "./GridMovie";
+import { PeliculasFiltro, getPeliculas } from "../service/PeliculaService";
 
 export const Buscador = () => {
   const [peliculas, setPeliculas] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    setPeliculas(data.peliculas);
-  }, [data]);
+    const cargarPeliculas = async () => {
+      const response = await getPeliculas();
+      setPeliculas(response);
+    };
 
-  const buscador = (e) => {
+    cargarPeliculas();
+  }, [setPeliculas]);
+
+  const buscador = async (e) => {
     e.preventDefault();
     const strTitulo = input
       .toLowerCase()
       .replace(/(?:^|\s)\w/g, (letra) => letra.toUpperCase());
-    let datosBusquedad = data.peliculas.filter(
-      (item) =>
-        item.nombre.includes(input) ||
-        item.nombre.includes(input.toLowerCase()) ||
-        item.nombre.includes(input.toUpperCase()) ||
-        item.nombre.includes(strTitulo)
-    );
-    setPeliculas(datosBusquedad);
+    const response = await PeliculasFiltro({
+      name: strTitulo,
+    });
+    setPeliculas(response);
   };
 
   return (
@@ -44,14 +46,16 @@ export const Buscador = () => {
       </form>
       <div className="container-streaming">
         <div className="grid-container">
-        <div className="grid-content">
-          {
-            peliculas.length > 0
-            ? peliculas.map((pelicula) => (
-              <GridMovie pelicula={pelicula} key={pelicula}> </GridMovie>
-            ))
-            : <h3>No hay resultados</h3>
-          }
+          <div className="grid-content">
+            {peliculas.length > 0 ? (
+              peliculas.map((pelicula) => (
+                <GridMovie pelicula={pelicula} key={pelicula}>
+                  {" "}
+                </GridMovie>
+              ))
+            ) : (
+              <h3>No hay resultados</h3>
+            )}
           </div>
         </div>
       </div>

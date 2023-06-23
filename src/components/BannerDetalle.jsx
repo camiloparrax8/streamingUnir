@@ -6,36 +6,29 @@ export const BannerDetalle = (props) => {
     <>
       <div className="home-poster">
         <div className="banner-img--container">
-          <img src={props.pelicula.imagen}></img>
+          <img src={props.pelicula.image}></img>
         </div>
         <div className="poster-info-content">
-            <img src={props.pelicula.imagen}></img>
+            <img src={props.pelicula.image}></img>
             <div className="content-info">
             <div className="info">
             <div className="starts-container">
               <i className="fa fa-star"></i>
-              {props.pelicula.puntuacion}
+              {props.pelicula.score}
             </div>
-            <p>{props.pelicula.duracion}</p>
+            <p>{props.pelicula.duration}</p>
           </div>
           <div className="title">
-              <h2 className="home-poster-title">{props.pelicula.nombre}</h2>
+              <h2 className="home-poster-title">{props.pelicula.name}</h2>
             </div>
           <div className="banner-description">
             <h6>{props.pelicula.sinopsis}</h6>
-            <p><b>Publicado en: </b>{props.pelicula.año}</p>
+            <p><b>Publicado en: </b>{props.pelicula.year}</p>
             <p><b>Director: </b>{props.pelicula.director}</p>
-            <p><b>Actores: </b>{props.pelicula.actores_principales.join(", ")}</p>
+            <p><b>Actores: </b>{props.pelicula.actors}</p>
+            <p><b>Categoria: </b>{props.pelicula.category}</p>
           </div>
-          <div className="poster-action">
-            {
-                props.pelicula.categoria.map( element => 
-                    <div className="primary-btn">
-                        {element}
-                    </div>       
-                )
-            }
-          </div>
+         
             </div>
         </div>
       </div>

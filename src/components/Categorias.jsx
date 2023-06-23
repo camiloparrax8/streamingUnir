@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from "react";
 import data from "../data.json";
 import { GridMovie } from "./GridMovie";
+import { getPeliculas, PeliculasFiltro } from "../service/PeliculaService";
 
 export const Categorias = () => {
   const [categorias, setCategorias] = useState([]);
   const [peliculas, setPeliculas] = useState([]);
-  const [categoriaActiva, setCategoriaActiva] = useState('Todas');
+  const [categoriaActiva, setCategoriaActiva] = useState("Todas");
 
   useEffect(() => {
+    const cargarPeliculas = async () => {
+      const response = await getPeliculas();
+      setPeliculas(response);
+    };
+
+    cargarPeliculas();
     let categoria = ["Todas"];
     setCategorias(categoria.concat(data.categorias));
-    setPeliculas(data.peliculas);
   }, [data]);
 
-  const filtro = (e) => {
+  const filtro = async (e) => {
     let categoria = e.target.value;
-    let peliculasCategoria = [];
     if (categoria == "Todas") {
-      peliculasCategoria = data.peliculas;
+      const response = await getPeliculas();
+      setPeliculas(response);
     } else {
-      peliculasCategoria = data.peliculas.filter((item) =>
-        item.categoria.includes(categoria)
-      );
+      const response = await PeliculasFiltro({ category: categoria });
+      setPeliculas(response);
     }
-    setPeliculas(peliculasCategoria);
-    setCategoriaActiva(categoria)
+    setCategoriaActiva(categoria);
   };
 
   return (
@@ -32,7 +36,13 @@ export const Categorias = () => {
       <h2>Categorías</h2>
       <div className="category-container">
         {categorias.map((item) => (
-          <button className={categoriaActiva == item ? "primary-btn-active" : "primary-btn"} value={item} onClick={filtro}>
+          <button
+            className={
+              categoriaActiva == item ? "primary-btn-active" : "primary-btn"
+            }
+            value={item}
+            onClick={filtro}
+          >
             {item}{" "}
           </button>
         ))}
@@ -41,7 +51,9 @@ export const Categorias = () => {
         <div className="grid-container">
           <div className="grid-content">
             {peliculas.map((pelicula) => (
-                <GridMovie pelicula={pelicula} key={pelicula}> </GridMovie>
+              <GridMovie pelicula={pelicula} key={pelicula}>
+                {" "}
+              </GridMovie>
             ))}
           </div>
         </div>
