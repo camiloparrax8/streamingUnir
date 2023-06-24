@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:8762/";
+const BASE_URL = "https://back-end-cloud-gateway-production-movies.up.railway.app/";
 
 export const getPeliculas = async () => {
   const result = await axios.get(BASE_URL + "ms-buscador/movies");
