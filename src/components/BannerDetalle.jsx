@@ -19,7 +19,7 @@ export const BannerDetalle = (props) => {
             <p>{props.pelicula.duration}</p>
           </div>
           <div className="title">
-              <h2 className="home-poster-title">{props.pelicula.name}</h2>
+              <h2 className="home-poster-title">{props.pelicula.name} - ${props.pelicula.price}</h2>
             </div>
           <div className="banner-description">
             <h6>{props.pelicula.sinopsis}</h6>

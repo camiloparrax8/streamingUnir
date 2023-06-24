@@ -25,3 +25,24 @@ export const PeliculasFiltro = async (querys) => {
   );
   return result.data;
 };
+export const crearSuscripcion = async (
+  id_movie,
+  nombre,
+  correo,
+  fechaVencimiento
+) => {
+  const result = await axios.post(BASE_URL + "ms-suscriptions/suscripciones", {
+    id_movie,
+    nombre,
+    correo,
+    fechaVencimiento,
+  });
+  return result.data;
+};
+
+export const SuscripcionesPorCorreo = async (correo) => {
+  const result = await axios.get(
+    BASE_URL + "ms-suscriptions/suscripciones?correo=" + correo.correo
+  );
+  return result.data;
+};
